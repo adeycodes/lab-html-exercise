@@ -1,0 +1,463 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+/* General styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Font Families */
+    --font-family: 'Poppins', sans-serif;
+
+
+    /* Font Sizes */
+    --font-size-h1: 64.85px;
+    --font-size-h2: 51.88px;
+    --font-size-h3: 41.5px;
+    --font-size-body: 17px;
+    --font-size-code: 14px;
+
+    /* Colors */
+    --color-primary: #FB3B49;
+    --color-primary-dark: #bb0609;
+    --color-secondary: #ffebb5;
+    --color-background: #f5f5f5;
+    --color-gray: #f8f4f4;
+    --color-dark: #000;
+    --color-white: #fff;
+    --color-accent: #F3E2DA;
+
+    /* Spacing */
+    --spacing-vertical: 1rem;
+    --spacing-horizontal: 2rem;
+
+    /* UI Elements */
+    --border-radius: 5px;
+    --button-padding: 10px 20px;
+    --button-bacckground: #FB3B49;
+    --input-border: 1px solid #ccc;
+    --input-placeholder-color: #999;
+    --btn-box-shadow-1: 8px 8px 0 rgba(251, 59, 73, 0.2);
+    --btn-box-shadow-2: 8px 8px 0 rgba(128, 83, 35, 0.2);
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--color-accent);
+    font-size: var(--font-size-body);
+    background-color: var(--color-white);
+}
+
+body::before {
+    content: "XS";
+    color: var(--color-dark);
+    font-size: 2rem;
+    font-weight: bold;
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+
+
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* custom style */
+header {
+    width: 100%;
+}
+
+#header .love {
+    /* border: 2px solid #000; */
+    display: flex;
+}
+
+header .header-container {
+    padding: 0 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+}
+
+
+nav {
+    width: 600px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    /* border: 2px solid black; */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* border: 2px solid blue; */
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+}
+
+.blackHeart {
+    width: 40px;
+    margin-right: 1rem;
+}
+
+#search-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: var(--color-white);
+    width: 100%;
+    height: 100px;
+}
+
+.img-container {
+    display: flex;
+    align-items: center;
+}
+
+.img-container img {
+    width: 90px;
+}
+
+span img {
+    width: 20px;
+}
+
+.search-field {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 0;
+    width: 800px;
+    position: relative;
+    height: 60px;
+}
+
+.search-field span {
+    display: flex;
+    align-items: center;
+    margin-right: 8px;
+    margin-left: 10px;
+}
+
+.search-field input[type="text"] {
+    border: none;
+    outline: none;
+    padding: 0;
+    font-size: 16px;
+    width: 200px;
+
+}
+
+.search-field input[type="button"] {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    margin: 0;
+    width: 20%;
+    height: 100%;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons button {
+    background-color: var(--color-gray);
+    color: var(--color-dark);
+    border: 2px solid var(--color-dark);
+    padding: 12px 22px;
+    cursor: pointer;
+    margin-left: 4px;
+    font-size: 17px;
+}
+
+.buttons button:first-of-type {
+    background-color: none;
+}
+
+.buttons button:nth-child(2) {
+    border: none;
+}
+
+
+/* first hero section styling */
+#hero {
+    border: 2px solid #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-gray);
+    padding: 50px 80px;
+}
+
+#hero h1 {
+    font-size: var(--font-size-h1);
+    font-weight: bolder;
+    line-height: 1.2;
+    margin-top: 30px;
+}
+
+#hero p {
+    text-align: center;
+    width: 50%;
+    font-size: var(--font-size-body);
+    margin: 3rem auto;
+    border: 2px solid blue;
+
+}
+
+#hero .buttons {
+    width: 50%;
+    /* border: 2px solid red; */
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#hero .buttons button {
+    padding: 15px 40px;
+    width: 70%;
+    font-weight: 600;
+    background-color: #FB3B49;
+    border: none;
+    color: var(--color-white);
+    margin-top: 0.5rem;
+}
+
+#hero .buttons button:first-child {
+    box-shadow: var(--btn-box-shadow-1);
+}
+
+
+#hero .buttons button:nth-child(2) {
+    margin-left: 30px;
+    background-color: var(--color-white);
+    color: var(--color-dark);
+}
+
+#second-section {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 4rem;
+    border: 2px solid black;
+    /* border-color: #FB3B49; */
+}
+
+#second-section .img-container {
+    margin-top: 4.5rem;
+}
+
+#second-section img {
+    width: 150px;
+    height: auto;
+    object-fit: cover;
+}
+
+#second-section h2 {
+    font-size: var(--font-size-h3);
+    font-weight: 900;
+    background-color: var(--color-secondary);
+    margin: 2rem auto 0;
+    transform: skew(9deg, 0deg);
+    font-style: italic;
+    width: 80%;
+    text-align: center;
+    line-height: 1.1;
+}
+
+#second-section p {
+    text-align: center;
+    width: 70%;
+    margin-top: 10px;
+}
+
+#third-section {
+    /* margin: 1rem; */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    overflow: hidden;
+}
+
+#third-section .row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0 2rem;
+    width: 100%;
+    border: 2px solid red
+}
+
+#third-section .row>.col {
+    /* border: 2px solid black; */
+    width: 400px;
+    padding: 14px 25px;
+}
+
+#third-section .col img {
+    width: 60px;
+    height: 40px;
+    margin: 15px 0;
+}
+
+#third-section .col h3 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: var(--color-primary)
+}
+
+#third-section button {
+    padding: 15px 30px;
+    font-weight: 600;
+    border: none;
+    color: var(--color-white);
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    width: 20%;
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    cursor: pointer;
+    font-size: 17px;
+    box-shadow: var(--btn-box-shadow-2);
+
+}
+
+
+
+
+
+
+
+/* media queries */
+/* This box class is purely used for explaining how the bootstrap grid system works. */
+.box {
+    background-color: lightblue;
+    border: 1px solid blue;
+    min-height: 50px;
+    font-size: 2rem;
+}
+
+@media (max-width: 576px) {
+    #header .love {
+        margin: 0;
+    }
+
+    #header nav  {
+        padding: 0;
+        
+    }
+
+    #header .love {
+        display: none;
+    }
+
+    nav ul {
+        gap: 6px
+    }
+    nav ul li {
+        font-size: 10px;
+    }
+}
+
+
+
+@media (min-width: 576px) and (max-width: 992px){
+    body::before {
+        content: "SM";
+    }
+
+    #header .love {
+        margin: 0;
+    }
+
+    #header .love span {
+        display: none;
+
+    }
+
+    .blackHeart {
+        width: 60px;
+
+    }
+
+    nav ul {
+        gap: 10px
+    }
+
+    nav ul li {
+        word-wrap: none;
+    }
+
+    .img-container img {
+        max-width: 45px;
+    }
+
+    .search-field {
+        width: 400px;
+        height: 40px;
+    }
+
+    .search-field span {
+        margin-right: 4px;
+        margin-left: 5px;
+    }
+
+
+    .search-field input {
+        width: 80px;
+        height: 50%;
+    }
+
+    .buttons button  {
+        padding: 6px 11px;
+    }
+
+    
+
+
+}
+
+
+@media (min-width: 1200px) {
+    body::before {
+        content: "XL";
+    }
+
+}
+
+@media (min-width: 1400px) {
+    body::before {
+        content: "XXL";
+    }
+}
