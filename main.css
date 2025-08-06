@@ -13,11 +13,20 @@
 
 
     /* Font Sizes */
-    --font-size-h1: 64.85px;
-    --font-size-h2: 51.88px;
-    --font-size-h3: 41.5px;
-    --font-size-body: 17px;
-    --font-size-code: 14px;
+    --font-size-h1: clamp(2.25rem, 4vw + .3rem, 2rem);
+    /* ~40px → 72px */
+    --font-size-h2: clamp(2rem, 3.5vw + 0.5rem, 2.25rem);
+    /* ~32px → 52px */
+    --font-size-h3: clamp(1.5rem, 3vw + 0.5rem, 2rem);
+    /* ~24px → 42px */
+    --font-size-body: clamp(.8rem, 0.4vw + 0.7rem, 1rem);
+    /* ~16px → 19px */
+    --font-size-code: clamp(0.6rem, 0.125vw + 0.4rem, 0.6rem);
+    /* ~13px → 15px */
+
+    /* Optional line-height control */
+    --line-height-headings: 1.2;
+    --line-height-body: 1.6;
 
     /* Colors */
     --color-primary: #FB3B49;
@@ -48,6 +57,8 @@ body {
     background-color: var(--color-accent);
     font-size: var(--font-size-body);
     background-color: var(--color-white);
+    width: 100vw;
+    height: 100vh;
 }
 
 body::before {
@@ -60,7 +71,10 @@ body::before {
     right: 0;
 }
 
-
+.container {
+    padding-left: 10px;
+    padding-right: 10px;
+}
 
 img {
     width: 100%;
@@ -106,7 +120,8 @@ nav ul {
 
 nav a {
     text-decoration: none;
-    color: black;
+    color: var(--color-dark);
+    font-size: var(--font-size-body);
 }
 
 .blackHeart {
@@ -115,6 +130,7 @@ nav a {
 }
 
 #search-container {
+
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -125,6 +141,11 @@ nav a {
     background-color: var(--color-white);
     width: 100%;
     height: 100px;
+
+    /* Base styles */
+
+    /* 2. Width/height are fluid */
+    /* 3. Padding scales with viewport */
 }
 
 .img-container {
@@ -144,10 +165,11 @@ span img {
     display: flex;
     align-items: center;
     border: 1px solid #ccc;
-    padding: 0;
-    width: 800px;
+    padding: 2px;
+    width: clamp(300px, 70vw, 1000px);
     position: relative;
     height: 60px;
+    /* Never exceeds 600px, scales down on small screens */
 }
 
 .search-field span {
@@ -162,12 +184,14 @@ span img {
     outline: none;
     padding: 0;
     font-size: 16px;
-    width: 200px;
+    width: clamp(150px,
+            calc(150px + 50 * (100vw - 768px) / 224),
+            200px);
 
 }
 
 .search-field input[type="button"] {
-    background-color: red;
+    background-color: var(--button-bacckground);
     color: white;
     border: none;
     padding: 8px 16px;
@@ -175,12 +199,18 @@ span img {
     position: absolute;
     right: 0;
     margin: 0;
-    width: 20%;
+    width: clamp(25%,
+            calc(20% + 5 * (100vw - 768px) / 224),
+            30%);
     height: 100%;
     font-size: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.search-field input[type="button"]:hover {
+    background-color: var(--color-primary-dark);
 }
 
 .buttons button {
@@ -191,6 +221,10 @@ span img {
     cursor: pointer;
     margin-left: 4px;
     font-size: 17px;
+}
+
+.buttons button:hover {
+    background: var(--color-accent);
 }
 
 .buttons button:first-of-type {
@@ -207,26 +241,25 @@ span img {
     border: 2px solid #000;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    place-items: center;
     background-color: var(--color-gray);
     padding: 50px 80px;
+    width: 100%;
 }
 
 #hero h1 {
     font-size: var(--font-size-h1);
     font-weight: bolder;
     line-height: 1.2;
-    margin-top: 30px;
+    margin-top: 20px;
+    text-wrap: nowrap;
 }
 
 #hero p {
     text-align: center;
-    width: 50%;
     font-size: var(--font-size-body);
-    margin: 3rem auto;
-    border: 2px solid blue;
-
+    margin: 1.4rem auto;
+    text-wrap: wrap;
 }
 
 #hero .buttons {
@@ -236,6 +269,7 @@ span img {
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 #hero .buttons button {
@@ -252,11 +286,18 @@ span img {
     box-shadow: var(--btn-box-shadow-1);
 }
 
+#hero .buttons button:first-child:hover {
+    background-color: var(--color-primary-dark);
+}
 
 #hero .buttons button:nth-child(2) {
     margin-left: 30px;
     background-color: var(--color-white);
     color: var(--color-dark);
+}
+
+#hero .buttons button:nth-child(2):hover {
+    background-color: var(--color-accent);
 }
 
 #second-section {
@@ -283,7 +324,7 @@ span img {
 }
 
 #second-section h2 {
-    font-size: var(--font-size-h3);
+    font-size: var(--font-size-h2);
     font-weight: 900;
     background-color: var(--color-secondary);
     margin: 2rem auto 0;
@@ -313,8 +354,9 @@ span img {
     display: flex;
     align-items: center;
     justify-content: center;
+    /* flex-wrap: wrap; */
     gap: 2rem;
-    margin: 0 2rem;
+    margin: 1rem rem;
     width: 100%;
     border: 2px solid red
 }
@@ -348,9 +390,8 @@ span img {
     background-color: var(--color-dark);
     color: var(--color-white);
     cursor: pointer;
-    font-size: 17px;
+    font-size: var(--font-size-body);
     box-shadow: var(--btn-box-shadow-2);
-
 }
 
 
@@ -361,103 +402,138 @@ span img {
 
 /* media queries */
 /* This box class is purely used for explaining how the bootstrap grid system works. */
-.box {
-    background-color: lightblue;
-    border: 1px solid blue;
-    min-height: 50px;
-    font-size: 2rem;
+/* Media Queries for Responsive Design */
+
+/* For tablets (768px - 991.98px) */
+@media (max-width: 991.98px) {
+    nav {
+        width: 500px;
+    }
+
+    header .header-container {
+        justify-content: space-between;
+        height: 8vh;
+    }
+
+    .love span {
+        display: none
+    }
+
+    .search-field input[type="button"] {
+        width: 25%;
+
+    }
+
+
+    .buttons button {
+        padding: 10px 18px;
+        font-size: 16px;
+    }
+
+    #third-section .row {
+        flex-wrap: wrap;
+        gap: 1.3rem;
+    }
+
+    #third-section button {
+        padding: 15px 30px;
+        width: 50%;
+    }
+
 }
 
-@media (max-width: 576px) {
-    #header .love {
-        margin: 0;
+/* For small tablets/large phones (576px - 767.98px) */
+@media (max-width: 767.98px) {
+    header .header {
+        height: 8vh;
+
     }
 
-    #header nav  {
-        padding: 0;
-        
-    }
-
-    #header .love {
-        display: none;
+    nav {
+        width: 100%;
+        height: auto;
+        margin-top: 2px;
     }
 
     nav ul {
-        gap: 6px
-    }
-    nav ul li {
-        font-size: 10px;
-    }
-}
-
-
-
-@media (min-width: 576px) and (max-width: 992px){
-    body::before {
-        content: "SM";
+        gap: 10px;
     }
 
-    #header .love {
-        margin: 0;
-    }
-
-    #header .love span {
-        display: none;
-
-    }
-
-    .blackHeart {
-        width: 60px;
-
-    }
-
-    nav ul {
-        gap: 10px
-    }
-
-    nav ul li {
-        word-wrap: none;
-    }
-
-    .img-container img {
-        max-width: 45px;
+    #search-container {
+        flex-direction: column;
+        height: auto;
+        padding: 3rem 1rem;
+        gap: 2rem;
     }
 
     .search-field {
-        width: 400px;
-        height: 40px;
+        width: 100%;
+        margin: 10px 0;
     }
 
-    .search-field span {
-        margin-right: 4px;
-        margin-left: 5px;
+    #hero .buttons {
+        width: 100%;
+        gap: 8px;
+
+        /* border: 2px solid red; */
     }
 
-
-    .search-field input {
-        width: 80px;
-        height: 50%;
+    #third-section .row>.col {
+        /* border: 2px solid black; */
+        width: 1000px;
+        padding: 14px 25px;
     }
 
-    .buttons button  {
-        padding: 6px 11px;
+    /* For mobile phones (up to 575.98px) */
+    @media (max-width: 575.98px) {
+        header .header-container {
+            height: 10vh;
+            row-gap: 2px;
+        }
+
+        .love {
+            margin-top: 6px;
+            margin-right: 0;
+            place-content: center;
+        }
+
+        nav ul {
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .search-field input[type="text"] {
+            width: 150px;
+        }
+
+        .search-field input[type="button"] {
+            width: 30%;
+        }
+
+
+        .buttons button {
+            margin: 5px 0;
+            width: 100%;
+        }
+
+        #hero .buttons button:nth-child(2) {
+            margin-left: 0;
+            margin-top: 1px;
+        }
+
+        .img-container img {
+            width: 70px;
+        }
+
+        .blackHeart {
+            width: 30px;
+        }
     }
 
-    
-
-
-}
-
-
-@media (min-width: 1200px) {
-    body::before {
-        content: "XL";
+    #third-section .row>.col {
+        /* border: 2px solid black; */
+        width: 1000px;
+        padding: 14px 25px;
     }
 
-}
-
-@media (min-width: 1400px) {
-    body::before {
-        content: "XXL";
-    }
 }
