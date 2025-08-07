@@ -13,13 +13,15 @@
 
 
     /* Font Sizes */
-    --font-size-h1: clamp(2.25rem, 4vw + .3rem, 2rem);
+    --font-size-h1: clamp(3.5vw, 4vw + .8rem, 3rem);
+    --font-size-h1-variant: clamp(3rem, 4vw + .3rem, 2.5rem);
     /* ~40px → 72px */
     --font-size-h2: clamp(2rem, 3.5vw + 0.5rem, 2.25rem);
     /* ~32px → 52px */
     --font-size-h3: clamp(1.5rem, 3vw + 0.5rem, 2rem);
     /* ~24px → 42px */
-    --font-size-body: clamp(.8rem, 0.4vw + 0.7rem, 1rem);
+    --font-size-h4: clamp(1rem, 3vw + 0.5rem, 1.2rem);
+    --font-size-body: clamp(.8rem, 0.6vw + 0.5rem, 1rem);
     /* ~16px → 19px */
     --font-size-code: clamp(0.6rem, 0.125vw + 0.4rem, 0.6rem);
     /* ~13px → 15px */
@@ -37,6 +39,7 @@
     --color-dark: #000;
     --color-white: #fff;
     --color-accent: #F3E2DA;
+    --dark-gray: #3A3B3C;
 
     /* Spacing */
     --spacing-vertical: 1rem;
@@ -57,12 +60,13 @@ body {
     background-color: var(--color-accent);
     font-size: var(--font-size-body);
     background-color: var(--color-white);
-    width: 100vw;
-    height: 100vh;
+    /* width: 100vw;
+    height: 100vh; */
+    color: var(--dark-gray);
 }
 
 body::before {
-    content: "XS";
+
     color: var(--color-dark);
     font-size: 2rem;
     font-weight: bold;
@@ -106,7 +110,6 @@ nav {
     height: 60px;
     display: flex;
     align-items: center;
-    /* border: 2px solid black; */
 }
 
 nav ul {
@@ -136,16 +139,11 @@ nav a {
     justify-content: space-around;
     margin: 0;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--color-gray);
     border-radius: 8px;
     background-color: var(--color-white);
     width: 100%;
     height: 100px;
-
-    /* Base styles */
-
-    /* 2. Width/height are fluid */
-    /* 3. Padding scales with viewport */
 }
 
 .img-container {
@@ -164,7 +162,7 @@ span img {
 .search-field {
     display: flex;
     align-items: center;
-    border: 1px solid #ccc;
+    border: 1px solid var(--dark-gray);
     padding: 2px;
     width: clamp(300px, 70vw, 1000px);
     position: relative;
@@ -238,7 +236,7 @@ span img {
 
 /* first hero section styling */
 #hero {
-    border: 2px solid #000;
+    border: 2px solid var(--color-gray);
     display: flex;
     flex-direction: column;
     place-items: center;
@@ -251,24 +249,25 @@ span img {
     font-size: var(--font-size-h1);
     font-weight: bolder;
     line-height: 1.2;
-    margin-top: 20px;
+    margin-top: 2rem;
     text-wrap: nowrap;
 }
 
 #hero p {
     text-align: center;
     font-size: var(--font-size-body);
-    margin: 1.4rem auto;
+    margin: 2rem auto;
     text-wrap: wrap;
+    width: 70%;
 }
 
 #hero .buttons {
     width: 50%;
-    /* border: 2px solid red; */
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 2rem;
 
 }
 
@@ -300,7 +299,8 @@ span img {
     background-color: var(--color-accent);
 }
 
-#second-section {
+#second-section,
+#fourth-section {
     width: 100%;
     height: auto;
     display: flex;
@@ -309,8 +309,9 @@ span img {
     align-items: center;
     gap: 1rem;
     padding-bottom: 4rem;
-    border: 2px solid black;
+    border: 2px solid var(--color-gray);
     /* border-color: #FB3B49; */
+    
 }
 
 #second-section .img-container {
@@ -338,31 +339,33 @@ span img {
 #second-section p {
     text-align: center;
     width: 70%;
-    margin-top: 10px;
+    margin: 1rem auto 2rem;
 }
 
 #third-section {
-    /* margin: 1rem; */
     display: flex;
     flex-direction: column;
     width: 100%;
     align-items: center;
     overflow: hidden;
+    border-bottom: 1px solid #bb0609;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('./images/bg.png');
+    background-size: cover;
+    background-position: center;
+    padding: 3rem;
+
 }
 
 #third-section .row {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* flex-wrap: wrap; */
     gap: 2rem;
-    margin: 1rem rem;
     width: 100%;
-    border: 2px solid red
+
 }
 
 #third-section .row>.col {
-    /* border: 2px solid black; */
     width: 400px;
     padding: 14px 25px;
 }
@@ -389,14 +392,86 @@ span img {
     width: 20%;
     background-color: var(--color-dark);
     color: var(--color-white);
-    cursor: pointer;
     font-size: var(--font-size-body);
     box-shadow: var(--btn-box-shadow-2);
 }
 
+#third-section button:hover {
+    cursor: pointer;
+    border:2px solid var(--color-gray);
+
+}
 
 
 
+#fourth-section {
+    margin-top: 3rem;
+    border: none;
+}
+
+#fourth-section .img-container {
+    width: 200px;
+    margin-top: 3rem;
+}
+
+
+#fourth-section img {
+    width: 400px;
+    height: auto;
+    object-fit: cover;
+    margin-top: 1rem;
+}
+
+#fourth-section h2 {
+    font-size: var(--font-size-h1-variant);
+    font-weight: 900;
+    margin: 2rem auto 0;
+    width: 50%;
+    text-align: center;
+    line-height: 1.1;
+}
+
+#fourth-section p {
+    text-align: center;
+    ;
+    margin-top: 10px;
+    width: 40%;
+    font-size: var(--font-size-body);
+}
+
+footer {
+    background-color: var(--color-secondary);
+    display: grid;
+    padding: 5rem 2rem;
+    /* gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
+    grid-template-columns: 100px 1fr 1fr 1fr;
+}
+
+footer .logo :first-child {
+    margin-bottom: .7rem;
+
+}
+
+footer .link * {
+    margin-bottom: .7rem;
+}
+
+footer .link h4 {
+    font-size: var(--font-size-h4);
+    font-weight: 600;
+}
+
+footer .link a {
+    text-decoration: none;
+    color: var(--dark-gray);
+}
+
+footer .link a:hover,
+footer .link a:active {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
 
 
 
@@ -438,6 +513,11 @@ span img {
     #third-section button {
         padding: 15px 30px;
         width: 50%;
+    }
+
+    #fourth-section h2,
+    #fourth-section p {
+        width: 80%;
     }
 
 }
@@ -536,4 +616,10 @@ span img {
         padding: 14px 25px;
     }
 
+    footer {
+        /* On tablets, use a 2-column layout */
+        grid-template-columns: repeat(2, 1fr);
+        text-align: left;
+        /* Align text to the left */
+    }
 }
